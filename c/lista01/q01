@@ -1,0 +1,14 @@
+#include <stdio.h>
+
+int main (){
+    
+    int a = 2, b = 3, c;
+
+    c = a;
+    a = b;
+    b = c;
+
+    printf("Os valores de a e b, respectivamente, são: %d e %d", a, b);
+    
+    return 0;
+}
