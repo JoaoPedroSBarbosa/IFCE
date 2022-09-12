@@ -5,7 +5,7 @@ int main(){
   int teste = 1;
   int day;
 
-  while (teste != 0){
+  do{
     puts("Insira o dia da semana: ");
     scanf("%d",&day);
 
@@ -27,7 +27,7 @@ int main(){
       break;
     else
       printf("Insira um dia válido!\n");
-  }
+  }while (teste != 0);
   
   return 0;
 }
