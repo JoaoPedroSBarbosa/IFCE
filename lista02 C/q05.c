@@ -1,40 +1,58 @@
 #include <stdio.h>
 
 int main(){
-  int v, t = 1, n = 0;
-  float u, r = 0, p = 0;
+  int v, r = 0, p = 0, t = 1, n = 0;
+  float u;
   char c;
 
   while(t != 0){
     printf("Qual o seu voto? ");
     scanf("%d",&v);
     
-    printf("Confirmar [S ou N]? ");
-    scanf("%s",&c); 
-
-    if(c == 'S'){
-       if(v == 7){
-         r += 1;
-       }else if(v == 5){
-         p += 1;
-       }else if(v == 0){
-         n +=1;
-       }else if(v < 0){
-         break;
-       } else{
-         n += 1;
-       } 
+    if(v == 7){
+      printf("Confirmar [S ou N]? ");
+      scanf("%s",&c); 
+      if(c == 'S'){
+        r += 1;
+      }else{
+        continue;
+      }  
+    }else if(v == 5){
+      printf("Confirmar [S ou N]? ");
+      scanf("%s",&c); 
+      if(c == 'S'){
+        p ++;
+      }else{
+        continue;
+      }  
+    }else if(v == 0){
+      printf("Confirmar [S ou N]? ");
+      scanf("%s",&c); 
+      if(c == 'S'){
+        n ++;
+      }else{
+        continue;
+      }  
+    }else if(v < 0){
+      break;
     }else{
-       continue;
+      printf("Confirmar [S ou N]? ");
+      scanf("%s",&c); 
+      if(c == 'S'){
+        n += 1;
+      }else{
+        continue;
+      }
     }
   }
   if(p > r){
-    u = (p /(p + r))*100;
-    printf("O Candidato vencedor foi o Paulo com %.2f por cento dos votos.",u); 
+    u = (float)p/((float)p + (float)r)*100;
+    printf("Paulo foi o candidadto vencedor com %.2f por cento dos votos.", u);
+    printf("Houveram %d votos nulos nessa eleição", n);
   }else{
-    u = (r /(p + r))*100;
-    printf("O Candidato vencedor foi a Renata com %.2f por cento votos.",u); 
+    u = (float)p/((float)p + (float)r)*100;
+    printf("Paulo foi o candidadto vencedor com %.2f por cento dos votos.", u);
+    printf("\nHouveram %d votos nulos nessa eleição", n);
   }
-
   return 0;
 }
