@@ -21,6 +21,6 @@ int main(){
       break;
     } 
   }
-  printf("%d e %d", me, ma);
+  printf("O menor: %d\nO maior: %d", me, ma);
   return 0;
 }
