@@ -19,7 +19,7 @@ int main(){
   }
   }
 
-  printf("%d",x);
+  printf("O somatório de todos os pares da faixa é: %d",x);
   
   return 0;
 }
