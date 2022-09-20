@@ -18,36 +18,50 @@ int main(){
     scanf("%d",&d);
 
     if(d == 1){
-
-      a2 = rand() % 7;
+      int g = 1, ver;
       
-      if(a2 != 0){
-        a1 = a1 << a2 - 1;
-        armario = armario | a1;
-      }else{
-        a1 = a1 << a2;
-        armario = armario | a1;
-      } 
+      do{
+        if(armario == 255){
+          printf("O armário está lotado!");
+          break;
+        }else{
+          a1 = 1;
+          ver = armario;
+          a2 = rand() % 8;
+          a1 = a1 << a2;
+          armario = armario | a1;
+        }
+        
+      }while(ver == armario);
       
-      for (unsigned i = 1 << 7; i > 0; i = i / 2)
-        (armario & i) ? printf(" 1 ") : printf(" 0 ");
+      armario = armario | a1;
+      
+      for (unsigned i = 1; i <= 128; i = i * 2){
+        if (armario & i){
+          printf("\n%d armario : ocupado\n", g);
+        }else{
+          printf("\n%d armario : desocupado\n", g);
+        }
+        g+=1;
+      }
     }else if(d == 2){
       puts("Qual o numero do armario que deseja desocupar?");
       scanf("%d",&a2);
+      
+      int g = 1;
 
-      if(a2 != 0){
-        a1 = a1 << a2 - 1;
-        a1 = ~a1;
-        armario = armario & a1;
-      }else{
-        a1 = a1 << a2;
-        a1 = ~a1;
-        armario = armario & a1;
+      a1 = a1 << (a2 - 1);
+      a1 = ~a1;
+      armario = armario & a1;
+      
+      for (unsigned i = 1; i <= 128; i = i * 2){
+        if (armario & i){
+          printf("\n%d armario : ocupado\n", g);
+        }else{
+          printf("\n%d armario : desocupado\n", g);
+        }
+        g+=1;
       }
-      
-      for (unsigned i = 1 << 7; i > 0; i = i / 2)
-        (armario & i) ? printf(" 1 ") : printf(" 0 ");
-      
     }else if(d == 3){
       break;
     }
