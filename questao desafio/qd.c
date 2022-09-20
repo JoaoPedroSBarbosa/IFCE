@@ -20,21 +20,21 @@ int main(){
     if(d == 1){
       int g = 1, ver;
       
-      do{
-        if(armario == 255){
-          printf("O armário está lotado!");
-          break;
-        }else{
+      if(armario == 255){
+        puts("");
+        printf("O armário está lotado!");
+        puts("");
+        continue;
+      }else{
+        do{
           a1 = 1;
           ver = armario;
           a2 = rand() % 8;
           a1 = a1 << a2;
           armario = armario | a1;
-        }
-        
-      }while(ver == armario);
+        }while(ver == armario);
       
-      armario = armario | a1;
+        armario = armario | a1;
       
       for (unsigned i = 1; i <= 128; i = i * 2){
         if (armario & i){
@@ -43,8 +43,10 @@ int main(){
           printf("\n%d armario : desocupado\n", g);
         }
         g+=1;
+        }
       }
     }else if(d == 2){
+      puts("");
       puts("Qual o numero do armario que deseja desocupar?");
       scanf("%d",&a2);
       
